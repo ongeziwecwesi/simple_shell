@@ -43,6 +43,7 @@ int hsh(info_t *info, char *av)
 void find_cmd(info_t *info)
 {
 	int i, k;
+
 	info->path = info->argv[0];
 	if (info->linecount_flag == 1)
 	{
@@ -59,7 +60,7 @@ void find_cmd(info_t *info)
 		fork_cmd(info);
 	else if (*(info->arg) != '\n')
 	{
-		info ->status = 127;
+		info->status = 127;
 		print_error(info, "not found\n");
 	}
 }
@@ -75,7 +76,7 @@ void fork_cmd(info_t *info)
 	pid_t child_pid;
 
 	child_pid = fork();
-	if ( child_pid == -1)
+	if (child_pid == -1)
 	{
 		perror("error:");
 		return;
@@ -96,10 +97,8 @@ void fork_cmd(info_t *info)
 		if (WIFEXITED(info->status))
 		{
 			info->status = WEXITSTATUS(info->status);
-			if (info ->status == 126)
+			if (info->status == 126)
 				print_error(info, "permission denied\n");
 		}
 	}
 }
-
-			
