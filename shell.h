@@ -2,7 +2,6 @@
 #define _SHELL_H_
 
 #include <stdio.h>
-#include <sdtlib.h>
 #include <unistd.h>
 #include <string.h>
 #include <sys/types.h>
